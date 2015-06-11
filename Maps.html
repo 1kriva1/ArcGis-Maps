@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <title>My Web Maps</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="http://js.arcgis.com/3.13/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="http://js.arcgis.com/3.13/esri/css/esri.css">
+    <link type="text/css" rel="stylesheet" href="MapStyle.css"/>   
+      <script src="http://js.arcgis.com/3.13/"></script>
+      <script src="MapScript.js"></script>            
+  </head>  
+  <body class="claro">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span class="navbar-brand"><span class="title">ArcGis</span> MyWeb Maps</span> 
+        </div>
+      <div>
+        <ul class="nav nav-pills navbar-left">
+          <li><button type="button" class="btn btn-primary" onclick="InitMaps('streets')">Open Street Map</button></li>
+          <li><button type="button" class="btn btn-primary" onclick="InitMaps('satellite')">Satellite Map</button></li>
+          <li><button type="button" class="btn btn-primary" onclick="InitMaps('topo')">BaseMap</button></li>
+          <li><button type="button" class="btn btn-primary" id="measurement" onclick="ShowHideElement('titlePane')">Measurement</button></li>
+          <li><button type="button" class="btn btn-primary" onclick="ShowHideElement('legend')">Legend</button></li>
+        </ul>
+        <ul class="nav nav-pills navbar-right">
+          <li><button type="button" class="btn btn-primary" id="buttonStartEdit" onclick="Edit('buttonStopEdit')">Start Editing</button></li>
+          <li><button type="button" class="btn btn-primary" id="buttonStopEdit" onclick="StopEditing()">Stop Editing</button></li>
+        </ul>      
+      </div>
+      </div>
+    </nav>    
+    <div id="mainWindow" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'headline',gutters:false"
+    style="width:100%; height:100%;">    
+      <div id="map" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">  
+        <div id="HomeButton"></div>           
+        <div style="position:absolute; right:20px; top:10px; z-Index:999;">          
+          <div id="legend"></div>
+          <div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:'false', open:'false'">
+            <div id="measurementDiv"></div>                     
+            <span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
